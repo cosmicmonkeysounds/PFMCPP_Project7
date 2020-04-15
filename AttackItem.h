@@ -4,5 +4,6 @@
 
 struct AttackItem : public Item
 {
-
+    AttackItem() : Item("attack item", 5) {}
+    void use(Character* character) override;
 };
