@@ -12,11 +12,12 @@ struct Item
     virtual void use(Character*);
 
     virtual ~Item();
-        
+
     inline const std::string& getName() { return name; }
     inline int getBoost() const { return boost; }
     
 private:
     std::string name;
     int boost;
+    
 };

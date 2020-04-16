@@ -11,7 +11,7 @@ Character::Character(int hp, int armor_, int attackDamage_ ) :
     attackDamage(attackDamage_)
 {
     initialHitPoints.reset( new int(hitPoints) );
-    initialArmorLevel.reset( new int( armor) );
+    initialArmorLevel.reset( new int(armor) );
     initialAttackDamage.reset( new int( attackDamage) );
 }
 
