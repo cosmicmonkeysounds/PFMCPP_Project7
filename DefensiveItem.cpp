@@ -10,3 +10,8 @@ void DefensiveItem::use(Character* character)
 {
     useDefensiveItem(character, *this);
 }
+
+DefensiveItem::~DefensiveItem()
+{
+    std::cout << "\nDestroying a defensive item\n";
+}

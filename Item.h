@@ -11,7 +11,7 @@ struct Item
 
     virtual void use(Character*);
 
-    virtual ~Item();
+    virtual ~Item() = 0;
         
     inline const std::string& getName() { return name; }
     inline int getBoost() const { return boost; }

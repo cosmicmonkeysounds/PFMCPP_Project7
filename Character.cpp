@@ -15,6 +15,11 @@ Character::Character(int hp, int armor_, int attackDamage_ ) :
     initialAttackDamage.reset( new int( attackDamage) );
 }
 
+Character::~Character()
+{
+    std::cout << "\nSee yah!\n";
+}
+
 void Character::attack( Character& other )
 {
     if( hitPoints <= 0 )

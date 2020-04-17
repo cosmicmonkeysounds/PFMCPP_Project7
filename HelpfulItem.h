@@ -10,5 +10,7 @@
 struct HelpfulItem : public Item
 {
     HelpfulItem() : Item("helpful item", 2) { }
+    ~HelpfulItem() override;
     virtual void use(Character* character) override;
+
 };
