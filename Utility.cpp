@@ -10,25 +10,13 @@ std::vector< std::unique_ptr<Item> > makeHelpfulItems( int num )
     
     while( num-- >= 0 )
     {
-        items.push_back( std::unique_ptr<HelpfulItem>(new HelpfulItem()) );
+        items.push_back( std::unique_ptr<HelpfulItem>( new HelpfulItem()) );
     }
     
     std::cout << "made " << items.size() << " helpful items" << std::endl;
     return items;
 }
 
-std::vector< std::unique_ptr<Item> > makeAttackItems( int num )
-{
-    std::vector< std::unique_ptr<Item> > items;
-    
-    while( num-- >= 0 )
-    {
-        items.push_back( std::unique_ptr<AttackItem>(new AttackItem()) );
-    }
-    
-    std::cout << "made " << items.size() << " attack items" << std::endl;
-    return items;
-}
 
 std::vector<std::unique_ptr<Item>> makeDefensiveItems(int num)
 {
@@ -36,7 +24,7 @@ std::vector<std::unique_ptr<Item>> makeDefensiveItems(int num)
     
     while( num-- >= 0 )
     {
-        items.push_back( std::unique_ptr<DefensiveItem>(new DefensiveItem()) );
+        items.push_back( std::unique_ptr<DefensiveItem>( new DefensiveItem()) );
     }
     
     std::cout << "made " << items.size() << " defensive items" << std::endl;
@@ -117,9 +105,4 @@ void useAttackItem(Character* character, Item* item)
     {
         //dragons don't carry attack items!
     }
-}
-
-int addTenPercent(int x)
-{
-    return x + ( x / 10);
 }

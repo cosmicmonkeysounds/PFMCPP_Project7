@@ -8,7 +8,6 @@ DragonSlayer::DragonSlayer( const std::string& name_ , int hp_, int armor_ )
                 {
                     defensiveItems = makeDefensiveItems(4);
                     helpfulItems = makeHelpfulItems(2);
-                    attackItems = 1;
                 }
 
 DragonSlayer::~DragonSlayer()
@@ -31,13 +30,12 @@ void DragonSlayer::attack(Character& other)
     std::cout << name << " is attacking " << other.getName() << " !!" << std::endl;
     if( auto* dragon = dynamic_cast<Dragon*>(&other) )
     {   
-        if( attackItems > 0 )
+        if( atkItem ) 
         {
-            AttackItem().use(this);
-            --attackItems;
+            atkItem->use( this );
+            atkItem.reset();
         }
 
-    
         //DragonSlayers get a 10x boost when attacking Dragon, from their attack item.
         //so they should USE their attack item before attacking the Dragon... 
         //note that items are single-use only, so you need to reset it after use.  
