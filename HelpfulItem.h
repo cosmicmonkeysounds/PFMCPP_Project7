@@ -7,10 +7,10 @@
 #include "DragonSlayer.h"
 #include "Dragon.h"
 
-struct HelpfulItem : public Item
+struct HelpfulItem : Item
 {
     HelpfulItem() : Item("helpful item", 2) { }
     ~HelpfulItem() override;
-    virtual void use(Character* character) override;
+    void use(Character* character) override;
 
 };

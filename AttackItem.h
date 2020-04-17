@@ -2,9 +2,9 @@
 
 #include "Item.h"
 
-struct AttackItem : public Item
+struct AttackItem : Item
 {
-    AttackItem() : Item("attack item", 5) {}
+    AttackItem() : Item("attack item", 10) {}
     ~AttackItem() override;
-    virtual void use(Character* character) override;
+    void use(Character* character) override;
 };

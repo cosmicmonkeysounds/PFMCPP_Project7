@@ -4,6 +4,7 @@
 
 #include "DefensiveItem.h"
 #include "HelpfulItem.h"
+#include "Utility.h"
 
 Character::Character(int hp, int armor_, int attackDamage_ ) :
     hitPoints(hp),
@@ -91,6 +92,21 @@ int Character::takeDamage(int damage)
     return hitPoints;
 }
 
+void Character::levelUp()
+{
+    if( hitPoints < *initialHitPoints ){ hitPoints = *initialHitPoints; }
+    else if( armor < *initialArmorLevel ){ armor = *initialArmorLevel; }
+    else if( attackDamage < *initialAttackDamage ){ attackDamage = *initialAttackDamage; }
+
+    hitPoints = addTenPercent( hitPoints );
+    armor = addTenPercent( armor );
+    attackDamage = addTenPercent( attackDamage );
+
+    *initialHitPoints = addTenPercent( *initialHitPoints );
+    *initialArmorLevel = addTenPercent( *initialArmorLevel );
+    *initialAttackDamage = addTenPercent( *initialAttackDamage );
+}
+
 void Character::attackInternal(Character& other)
 {
     if( other.hitPoints <= 0 )
@@ -101,19 +117,7 @@ void Character::attackInternal(Character& other)
             b) your stats are boosted 10%
             c) the initial value of your stats is updated to reflect this boosted stat for the next time you defeat another character.
       */
-
-        if( hitPoints < *initialHitPoints ){ hitPoints = *initialHitPoints; }
-        else if( armor < *initialArmorLevel ){ armor = *initialArmorLevel; }
-        else if( attackDamage < *initialAttackDamage ){ attackDamage = *initialAttackDamage; }
-
-        boostHitPoints( *initialHitPoints / 10 );
-        boostArmor( *initialArmorLevel / 10 );
-        boostAttackDamage( *initialAttackDamage / 10 );
-
-        initialHitPoints.reset( new int( *initialHitPoints + (*initialHitPoints / 10) ) );
-        initialArmorLevel.reset( new int( *initialArmorLevel + (*initialArmorLevel / 10) ) );
-        initialAttackDamage.reset( new int( *initialAttackDamage + (*initialAttackDamage / 10) ) );
-
+        levelUp();
         std::cout << getName() << " defeated " << other.getName() << " and leveled up!" << std::endl;        
     }
 }

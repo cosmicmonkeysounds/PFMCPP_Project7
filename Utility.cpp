@@ -118,3 +118,8 @@ void useAttackItem(Character* character, Item* item)
         //dragons don't carry attack items!
     }
 }
+
+int addTenPercent(int x)
+{
+    return x + ( x / 10);
+}

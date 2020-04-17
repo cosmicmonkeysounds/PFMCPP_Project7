@@ -56,10 +56,13 @@ struct Character
         std::cout << std::endl;
         std::cout << std::endl;
     }
+
+    void levelUp();
+
 protected:
     std::vector< std::unique_ptr<Item> > defensiveItems;
     std::vector< std::unique_ptr<Item> > helpfulItems;
-    std::vector< std::unique_ptr<Item> > attackItems;
+    int attackItems = 0;
 
     int hitPoints, armor, attackDamage;
     bool isDefending = false;
