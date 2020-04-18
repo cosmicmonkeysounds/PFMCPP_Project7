@@ -56,8 +56,6 @@ send me a DM to check your pull request
 
  */
 
-#include "Item.h"
-#include "Character.h"
 #include "Dwarf.h"
 #include "Paladin.h"
 #include "Dragon.h"

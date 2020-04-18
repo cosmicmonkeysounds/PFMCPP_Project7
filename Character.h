@@ -9,13 +9,8 @@
 
 struct Character
 {
-    Character(int hp, int armor_, int attackDamage_ );
-    virtual ~Character() { }
-    
-    /*
-     a pure virtual getName function.
-     derived class stores the name, not the base class.
-     */
+    Character( int hp, int armor_, int attackDamage_ );
+    virtual ~Character();
     
     virtual const std::string& getName() = 0;
     virtual std::string getStats() = 0;
@@ -61,11 +56,14 @@ struct Character
         std::cout << std::endl;
         std::cout << std::endl;
     }
+
+    void levelUp(int& currentStat, int& initialStat);
+
 protected:
-    std::vector<std::unique_ptr<Item>> defensiveItems;
-    std::vector<std::unique_ptr<Item>> helpfulItems;
-    int hitPoints, armor;
-    int attackDamage;
+    std::vector< std::unique_ptr<Item> > defensiveItems;
+    std::vector< std::unique_ptr<Item> > helpfulItems;
+
+    int hitPoints, armor, attackDamage;
     bool isDefending = false;
 private:
     std::unique_ptr<int> initialHitPoints, initialArmorLevel, initialAttackDamage;
