@@ -57,7 +57,7 @@ struct Character
         std::cout << std::endl;
     }
 
-    void levelUp(int* currentStat, int* initialStat);
+    void levelUp(int& currentStat, int& initialStat);
 
 protected:
     std::vector< std::unique_ptr<Item> > defensiveItems;
